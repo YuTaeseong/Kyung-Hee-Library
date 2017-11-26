@@ -1,0 +1,8 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+    <form method="POST" action="{% url 'library_sign_up' %}">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">확인</button>
+    </form>
+{% endblock %}

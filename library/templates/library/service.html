@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}?ver1"></script>
+    <link rel="manifest" href="{%static 'manifest.json'%}">
+</head>
+<body>
+    <div id="permission_div" style="display: none;">
+        <h4>Needs Permission</h4>
+            <p id="token"></p>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="requestPermission()">Request Permission</button>
+    </div>
+</body>
+</html>
