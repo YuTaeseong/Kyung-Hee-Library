@@ -22,4 +22,4 @@ class user_token(models.Model):
     token = models.CharField(max_length=100)
 
 class server_api(models.Model):
-    server_api = models.CharField(max_length=100, blank=True)
+    server_api = models.CharField(max_length=300, blank=True)

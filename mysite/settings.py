@@ -115,6 +115,25 @@ USE_L10N = True
 
 USE_TZ = True
 
+#logger add
+LOGGING = {
+  'version': 1,
+  'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'cron.log',
+            },
+        },
+    'loggers': {
+        'django_crontab.crontab': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        	},
+	}
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -126,4 +145,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-CRONJOBS=[('*/5 * * * *', 'library.cron.scheduled_job')]
+CRONJOBS=[('*/1 * * * *', 'library.cron.scheduled_job', '>> cron.log')]
+CRONTAB_COMMAND_SUFFIX = '2>&1'

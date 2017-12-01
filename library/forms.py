@@ -18,8 +18,8 @@ class CreateUserForm(UserCreationForm):
         fields = ("username", "password1", "password2",)
         field_classes = {'username': UsernameField}
 
-    def save(self, commit=True):  # 저장하는 부분 오버라이딩
-        user = super(UserCreationForm, self).save(commit=False)  # 본인의 부모를 호출해서 저장하겠다.
+    def save(self, commit=True):
+        user = super(UserCreationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
 
         if commit:

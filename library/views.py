@@ -1,3 +1,4 @@
+#-*-coding: utf-8-*-
 from django.shortcuts import render, redirect
 from . import forms
 from selenium import webdriver
@@ -23,13 +24,13 @@ def library_sign_up(request) :
             library_id = form.cleaned_data.get('library_id')
             library_password = form.cleaned_data.get('library_password')
 
-            url_driver = '/Users/YuGeekLab/Desktop/phantomjs-2.1.1-windows/bin/phantomjs'
+            url_driver = '/home/yugeeklab/다운로드/phantomjs-2.1.1-linux-x86_64/bin/phantomjs'
 
             try:
-                driver = webdriver.PhantomJS(url_driver)
+                driver = webdriver.PhantomJS(executable_path=url_driver, service_args=['--ignore-ssl-errors=yes'])
                 driver.implicitly_wait(3)
             except:
-                return Http404('some message')
+                raise Http404('some message')
 
             driver.get('https://khis.khu.ac.kr/identity/Login.ax?url=%2Fmylibrary%2FCirculation.ax')
 
@@ -62,9 +63,9 @@ def service(request):
     user_library_id = user.library_id
     user_library_password = user.library_password
 
-    url_driver = '/Users/YuGeekLab/Desktop/phantomjs-2.1.1-windows/bin/phantomjs'
+    url_driver = '/home/yugeeklab/다운로드/phantomjs-2.1.1-linux-x86_64/bin/phantomjs'
     try:
-        driver = webdriver.PhantomJS(url_driver)
+        driver = webdriver.PhantomJS(executable_path=url_driver, service_args=['--ignore-ssl-errors=yes'])
         driver.implicitly_wait(3)
     except:
         raise Http404('some message')

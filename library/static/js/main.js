@@ -34,6 +34,9 @@ navigator.serviceWorker.register('/static/js/firebase_serviceworker.js')
   });
 
   resetUI();
+})
+.catch(function(error){
+    console.log(error)
 });
 
 function resetUI() {
